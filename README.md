@@ -15,3 +15,7 @@ I ran the following URIs as parameters to URIController against my local databas
 /com/dzion/evertrue/mosttenured -> data\mosttenured.json
 
 Keep in mind the populate_career_history procedure is random, so results will vary. Since the statistical population was large I included average retention to 2 digits to more obviously display the sorting. I've included a TODO list in my last round of commit comments. Checking out for the evening, have a great weekend.
+
+DZion 2019/05/11 17:46
+----------------------
+Unit tested and determined most tenured selection criteria wasn't correct. I pulled the updated query into a helper method to make it much more readable. I also converted the statement to a prepared statement, much easier and flexible to modify the query. Average company retention is the average of all location end_date minus start_date. People qualify as most tenured if an one stint at any company locations is greater than the company's average. A person can be selected multiple times using these rules. Would it make sense to have an array within the most tenured people displaying all end_date/start_date pairs that are greater than that company's average?
