@@ -2,11 +2,15 @@ package com.evertrue;
 
 import java.util.Date;
 
+import com.google.gson.annotations.SerializedName;
+
 public class CareerInfo {
 	private String position;
 	private String company;
 	private String state;
+	@SerializedName("start_date")
 	private Date startDate;
+	@SerializedName("end_date") 
 	private Date endDate;
 
 	public CareerInfo(String position, String company, String state, Date startDate, Date endDate) {

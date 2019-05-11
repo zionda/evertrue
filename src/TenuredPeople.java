@@ -22,4 +22,13 @@ public class TenuredPeople {
 	public void setTenure(float tenure) {
 		this.tenure = tenure;
 	}
+	public TenuredPeople(String name, int age, float tenure) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.tenure = tenure;
+	}
+	public TenuredPeople() {
+		super();
+	}
 }

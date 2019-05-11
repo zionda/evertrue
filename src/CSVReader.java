@@ -15,6 +15,7 @@ public class CSVReader {
 		String cvsSplitBy = ",";
 
 		Connection conn = null;
+		PreparedStatement st = null;
 
 		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
@@ -45,7 +46,7 @@ public class CSVReader {
 						if (i % 250 == 0) {
 							System.out.println("Records processed: " + i);
 						}
-						PreparedStatement st = conn.prepareStatement(query);
+						st = conn.prepareStatement(query);
 						//st.setInt(1, i);
 						st.setString(1, people[0]);
 						st.setString(2, people[1]);
@@ -76,6 +77,19 @@ public class CSVReader {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try{
+				if(st!=null)
+					st.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+			
 		}
 	}
 
